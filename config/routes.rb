@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get '/' => 'prices#root', as: 'root'
   post 'best_price' => 'prices#best_price'
   get 'result' => 'prices#result'
-  # resources :prices
+  resources :prices
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
