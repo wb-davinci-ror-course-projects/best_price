@@ -1,5 +1,5 @@
 class PricesController < ApplicationController
-  before_action :set_price, only: [:show, :edit, :update, :destroy]
+  before_action :set_price, only: [:best_price, :show, :edit, :update, :destroy]
 
   # GET /prices
   # GET /prices.json
