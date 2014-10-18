@@ -2,18 +2,17 @@
   <h2>Sale or Regular Price?</h2>
 </div>
 <%= form_tag(best_price_path) do %>
-  <% if @price.errors.any? %>
-    <div class="alert alert-danger alert-dismissable">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <h4><%= pluralize(@price.errors.count, "error") %> prohibited this price from being saved:</h4>
-
-      <ul>
-        <% @price.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <!--<%# if @price.errors.any? %>-->
+    <!--<div class="alert alert-danger alert-dismissable">-->
+      <!--<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>-->
+      <!--<h4><%#= pluralize(@price.errors.count, "error") %> prohibited this from being calculated</h4>-->
+      <!--<ul>-->
+        <!--<%# @price.errors.full_messages.each do |msg| %>-->
+          <!--<li><%#= msg %></li>-->
+        <!--<%# end %>-->
+      <!--</ul>-->
+    <!--</div>-->
+  <!--<%# end %>-->
 
   <div class="form-group">
     <div class="col-sm-10">
