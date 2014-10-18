@@ -9,7 +9,7 @@ class PricesController < ApplicationController
   end
 
   def best_price
-    if params[:sale_price] == nil || params[:sale_price] == nil || params[:employee_discount] == nil
+    if params[:sale_price] == '' || params[:sale_price] == '' || params[:employee_discount] == ''
       redirect_to '/', notice: 'please enter information for all fields'
     end
       final_sale_price = params[:sale_price].to_f - (params[:sale_price].to_f * 0.10)
@@ -20,7 +20,7 @@ class PricesController < ApplicationController
       result_notice =  "Go with regular price with employee discount! $#{sprintf('%.2f', final_regular_price)}"
     end
       redirect_to '/', notice: result_notice
-    end
+  end
 
   def result
   end
