@@ -11,7 +11,7 @@ class PricesController < ApplicationController
     def best_price
       final_sale_price = params[:sale_price].to_f - (params[:sale_price].to_f * 0.10)
       final_regular_price = params[:regular_price].to_f * (1 - params[:employee_discount].to_f)
-      if params[:sale_price] != '' || params[:regular_price] != '' || params[:employee_discount] != ''
+      if params[:employee_discount] != '' || params[:regular_price] != '' || params[:sale_price] != ''
         if final_sale_price <= final_regular_price
           result_notice = "Go with sale price with 10% discount! $#{sprintf('%.2f', final_sale_price)}"
         else
