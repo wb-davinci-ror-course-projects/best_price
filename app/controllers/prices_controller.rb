@@ -12,7 +12,8 @@ class PricesController < ApplicationController
       final_sale_price = params[:sale_price].to_f - (params[:sale_price].to_f * 0.10)
       final_regular_price = params[:regular_price].to_f * (1 - params[:employee_discount].to_f)
       if params[:employee_discount] == '' || params[:regular_price] == '' || params[:sale_price] == ''
-        redirect_to '/', notice: 'please enter info for all fields'
+        elsif params[:employee_discount].to_f < 1 || params[:regular_price] .to_f < 1 || params[:sale_price] .to_f < 1
+        redirect_to '/', notice: 'please enter numeric info for all fields'
       else
         if final_sale_price <= final_regular_price
           result_notice = "Go with sale price with 10% discount! $#{sprintf('%.2f', final_sale_price)}"
