@@ -9,6 +9,8 @@ class PricesController < ApplicationController
   end
 
   def best_price
+    @price = Price.new(price_params)
+    if @price != nil
     final_sale_price = params[:sale_price].to_f - (params[:sale_price].to_f * 0.10)
     final_regular_price = params[:regular_price].to_f * (1 - params[:employee_discount].to_f)
     if final_sale_price <= final_regular_price
@@ -17,7 +19,9 @@ class PricesController < ApplicationController
       result_notice =  "Go with regular price with employee discount! $#{sprintf('%.2f', final_regular_price)}"
     end
     redirect_to '/', notice: result_notice
-  end
+    else
+    redirect_to '/'
+    end
 
   def result
   end
