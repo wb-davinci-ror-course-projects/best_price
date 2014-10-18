@@ -1,22 +1,21 @@
 class PricesController < ApplicationController
-  before_action :set_price, only: [:best_price, :show, :edit, :update, :destroy]
+  before_action :set_price, only: [:show, :edit, :update, :destroy]
 
   # GET /prices
   # GET /prices.json
   def root
-    @price = Price.new
     render :sale_no_sale
   end
 
   def best_price
-      final_sale_price = params[:sale_price].to_f - (params[:sale_price].to_f * 0.10)
-      final_regular_price = params[:regular_price].to_f * (1 - params[:employee_discount].to_f)
+    final_sale_price = params[:sale_price].to_f - (params[:sale_price].to_f * 0.10)
+    final_regular_price = params[:regular_price].to_f * (1 - params[:employee_discount].to_f)
     if final_sale_price <= final_regular_price
       result_notice = "Go with sale price with 10% discount! $#{sprintf('%.2f', final_sale_price)}"
     else
       result_notice =  "Go with regular price with employee discount! $#{sprintf('%.2f', final_regular_price)}"
     end
-      redirect_to '/', notice: result_notice
+    redirect_to '/', notice: result_notice
   end
 
   def result
