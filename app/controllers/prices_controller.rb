@@ -9,10 +9,13 @@ class PricesController < ApplicationController
   end
 
     def best_price
-      final_sale_price = params[:sale_price].to_f - (params[:sale_price].to_f * 0.10)
-      final_regular_price = params[:regular_price].to_f * (1 - params[:employee_discount].to_f)
-      if params[:employee_discount] == '' || params[:regular_price] == '' || params[:sale_price] == ''
-        elsif params[:employee_discount].to_f < 1 || params[:regular_price] .to_f < 1 || params[:sale_price] .to_f < 1
+      sale_price = params[:sale_price].to_f
+      regular_price = params[:regular_price].to_f
+      employee_discount = params[:employee_discount].to_f
+      sale_price > 0 ? final_sale_price = params[:sale_price].to_f - (params[:sale_price].to_f * 0.10) : sale_price = 'invalid'
+      regular_price > 0 && employee_discount > 0 ? final_regular_price = params[:regular_price].to_f * (1 - params[:employee_discount].to_f) : regular_price = 'invalid'
+      raise
+      if sale_price == 'invlaid' || regular_price == 'invalid'
         redirect_to '/', notice: 'please enter numeric info for all fields'
       else
         if final_sale_price <= final_regular_price
