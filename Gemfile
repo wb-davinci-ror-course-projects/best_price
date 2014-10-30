@@ -9,7 +9,7 @@ group :test, :darwin, :development do
   gem 'guard-bundler'
   gem 'ruby_gntp'
   gem 'capybara'
-  # gem 'sqlite3'
+  gem 'sqlite3'
 
 end
 

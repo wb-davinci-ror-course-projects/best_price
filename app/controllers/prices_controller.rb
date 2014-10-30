@@ -14,7 +14,6 @@ class PricesController < ApplicationController
       employee_discount = params[:employee_discount].to_f
       sale_price > 0 ? final_sale_price = params[:sale_price].to_f - (params[:sale_price].to_f * 0.10) : sale_price = 'invalid'
       regular_price > 0 && employee_discount > 0 ? final_regular_price = params[:regular_price].to_f * (1 - params[:employee_discount].to_f) : regular_price = 'invalid'
-      raise
       if sale_price == 'invlaid' || regular_price == 'invalid'
         redirect_to '/', notice: 'please enter numeric info for all fields'
       else
