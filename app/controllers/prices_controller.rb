@@ -89,7 +89,6 @@ class PricesController < ApplicationController
   #   def set_price
   #     @price = Price.find(params[:id])
   #   end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     # def price_params
     #   params.require(:price).permit(:regular_price, :sale_price, :employee_discount, :emp_dis_on_sale_price)
